@@ -255,16 +255,19 @@ class _DashboardPageState extends State<DashboardPage> {
                           margin: const EdgeInsets.symmetric(vertical: 8),
                           elevation: 3,
                           child: ListTile(
-                            leading: const Icon(Icons.event_note,
-                                color: Colors.pink),
+                            leading: const Icon(Icons.event_note, color: Colors.pink),
                             title: Text(
-                              message.toString(),
-                              style: const TextStyle(fontSize: 16),
+                              "Message: ${data['prediction']?['message'] ?? 'No message'}",
+                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            subtitle: Text(
-                              date != null
-                                  ? "${date.day}/${date.month}/${date.year}"
-                                  : "-",
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Date: ${date != null ? "${date.day}/${date.month}/${date.year}" : "-"}"),
+                                Text("Actual cycle length: ${data['prediction']?['actual_cycle_length'] ?? '-'}"),
+                                Text("Predicted cycle length: ${data['prediction']?['residual'] ?? '-'}"),
+                                Text("Deviation: ${data['prediction']?['predicted_cycle_length'] ?? '-'}"),
+                              ],
                             ),
                           ),
                         );
@@ -272,30 +275,49 @@ class _DashboardPageState extends State<DashboardPage> {
                     );
                   } else {
                     // Graph view
-                    final List<FlSpot> spots = [];
+                    final List<FlSpot> actualSpots = [];
+                    final List<FlSpot> predictedSpots = [];
+
                     for (int i = 0; i < docs.length; i++) {
                       final data = docs[i].data();
                       final ts = data['timestamp'];
                       if (ts is Timestamp) {
-                        spots.add(FlSpot(
-                          i.toDouble(),
-                          (i % 5 + 1).toDouble(), // dummy Y value
-                        ));
+                        final actual = (data['prediction']?['actual_cycle_length'] ?? 0).toDouble();
+                        final predicted = (data['prediction']?['predicted_cycle_length'] ?? 0).toDouble();
+
+                        actualSpots.add(FlSpot(i.toDouble(), actual));
+                        predictedSpots.add(FlSpot(i.toDouble(), predicted));
                       }
                     }
+
                     return Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: LineChart(
                         LineChartData(
+                          titlesData: FlTitlesData(
+                            leftTitles: AxisTitles(
+                              sideTitles: SideTitles(showTitles: true),
+                            ),
+                            bottomTitles: AxisTitles(
+                              sideTitles: SideTitles(showTitles: true),
+                            ),
+                          ),
+                          gridData: FlGridData(show: true),
                           borderData: FlBorderData(show: true),
-                          titlesData: FlTitlesData(show: true),
                           lineBarsData: [
                             LineChartBarData(
-                              spots: spots,
+                              spots: actualSpots,
                               isCurved: true,
-                              barWidth: 2,
-                              dotData: FlDotData(show: true),
                               color: Colors.pink,
+                              barWidth: 3,
+                              dotData: FlDotData(show: true),
+                            ),
+                            LineChartBarData(
+                              spots: predictedSpots,
+                              isCurved: true,
+                              color: Colors.blue,
+                              barWidth: 3,
+                              dotData: FlDotData(show: true),
                             ),
                           ],
                         ),

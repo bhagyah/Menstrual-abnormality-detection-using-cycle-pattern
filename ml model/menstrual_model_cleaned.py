@@ -7,19 +7,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import joblib
 
-# Load dataset
+
 data = pd.read_csv('menstrual_irregularity_dataset.csv')
 
-# Define features
+
 numerical_features = [
     'age', 'bmi', 'tracking_duration_months', 'pain_score',
     'avg_cycle_length', 'cycle_length_variation', 'avg_bleeding_days',
     'bleeding_volume_score', 'intermenstrual_episodes',
-    'cycle_variation_coeff',  # corrected column name
+    'cycle_variation_coeff',
     'pattern_disruption_score', 'duration_abnormality_flag'
 ]
 categorical_features = ['life_stage']
-target = 'avg_cycle_length'  # adjusted target
+target = 'avg_cycle_length' 
 
 # Handle missing values
 imputer = SimpleImputer(strategy='mean')
