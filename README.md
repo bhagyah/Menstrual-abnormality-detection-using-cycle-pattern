@@ -61,23 +61,23 @@ cd menstrual_abnormality
 bash# Install Flutter dependencies
 flutter pub get
 
-# Configure Firebase
-# Add your google-services.json (Android) and GoogleService-Info.plist (iOS)
-# Update firebase_options.dart with your Firebase configuration
+#### Configure Firebase
+#### Add your google-services.json (Android) and GoogleService-Info.plist (iOS)
+#### Update firebase_options.dart with your Firebase configuration
 
-# Run the Flutter app
+#### Run the Flutter app
 flutter run
 3. Machine Learning Backend Setup
 bash# Navigate to the ML model directory
 cd ml_model
 
-# Install Python dependencies
+#### Install Python dependencies
 pip install flask pandas numpy scikit-learn joblib flask-cors
 
-# Train the model (optional - pre-trained models included)
+#### Train the model (optional - pre-trained models included)
 python menstrual_model_cleaned.py
 
-# Start the Flask API server
+#### Start the Flask API server
 python app.py
 The Flask server will run on http://127.0.0.1:5000 by default.
 4. Firebase Configuration
