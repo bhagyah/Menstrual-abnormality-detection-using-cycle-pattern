@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1074107352890",
+    "project_id": "menstrualabnormalitydetection",
+    "storage_bucket": "menstrualabnormalitydetection.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074107352890:android:280027cd908e1211737203",
+        "android_client_info": {
+          "package_name": "com.example.menstrual_abnormality"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074107352890-gk5kmdm41ckgkkq5j169svqfh0jku8ah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUdK0UAK_0E7y1Fl1fDsRjFCrwVpsYWCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074107352890-gk5kmdm41ckgkkq5j169svqfh0jku8ah.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074107352890-5fnhmb5qoe56seso2j99eina4cckdu6d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.menstrualAbnormality"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
