@@ -185,6 +185,7 @@ The core prediction model uses a **Random Forest Regressor** with the following 
 
 | Name                      | Reg No     |
 |---------------------------|------------|
+| E.K.Bhagya Hirushan       | 22UG1-0938 |
 | K. Gobishan               | 21UG1-1020 |
 | Yugadharshini             | 22UG1-0289 |
 | T. R. A. Dinesh Rodriguez | 22UG1-0753 |
@@ -194,7 +195,7 @@ The core prediction model uses a **Random Forest Regressor** with the following 
 | W. Chathushka Fernando    | 21UG1-1160 |
 | J. Hashanraj              | 22UG1-0330 |
 | S. Kajipan                | 22UG1-0927 |
-| E.K.B.H. Jayarathna       | 22UG1-0938 |
+
 
 ## ✅ Conclusion
 
